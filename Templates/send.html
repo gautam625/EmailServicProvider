@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+    <link href="{% static 'send.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container bootdey">
+<div class="email-app">
+
+    <nav>
+        <a href="#" class="btn btn-danger btn-block">New Email</a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox <span class="badge badge-danger">4</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Stared</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-rocket"></i> Sent</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-trash-o"></i> Trash</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-bookmark"></i> Important</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox <span class="badge badge-danger">4</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <p class="text-center">Send Email</p>
+        <form action="\send\" method="POST">
+            {% csrf_token %}
+            <div class="form-row mb-3">
+                <label for="to" class="col-2 col-sm-1 col-form-label">Sender</label>
+                <div class="col-10 col-sm-11">
+                    <input type="email" class="form-control" id='to' name="sender" placeholder="{{email}}" readonly>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <label for="cc" class="col-2 col-sm-1 col-form-label">Receiver</label>
+                <div class="col-10 col-sm-11">
+                    <input type="email" class="form-control" id="cc" name="receiver" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <label for="c" class="col-2 col-sm-1 col-form-label">Subject</label>
+                <div class="col-10 col-sm-11">
+                    <input type="text" class="form-control" id="c" name="subject" placeholder="Subject">
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                    <textarea class="form-control" id="message" name="body" rows="12" placeholder="Click here to reply"></textarea>
+            </div>
+             <div class="form-group">
+                    <button type="submit" class="btn btn-success">Send</button>
+                    <a href="/" class="btn btn-danger">Cancel</a>
+             </div>
+        </form>
+    </main>
+</div>
+</div>
+
+<script src='https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+
+</body>
+</html>

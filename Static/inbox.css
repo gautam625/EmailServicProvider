@@ -1,0 +1,99 @@
+/* Ensure the body and html take full height */
+html, body {
+    height: 100%; /* Make sure the body and html take full height */
+    margin: 0;    /* Remove all margins */
+    padding: 0;   /* Remove all padding */
+}
+
+/* Apply 5px space on all sides */
+body {
+    background: #eee;
+    margin-top: 5px; /* Optional, adds a slight margin on top */
+    padding-left: 5px; /* 5px padding on the left */
+    padding-right: 5px; /* 5px padding on the right */
+    color: black; /* Set the text color to black */
+}
+
+/* Ensure the container takes up full width minus the 5px padding */
+.container {
+    padding-left: 0;
+    padding-right: 0;
+    width: calc(100% - 10px);  /* Full width minus 5px on each side */
+    margin: 0 auto;
+}
+
+/* Grid adjustments */
+.grid {
+    position: relative;
+    width: 100%;    /* Full width */
+    background: #fff;
+    color: black; /* Set the text color to black */
+    border-radius: 2px;
+    margin-bottom: 25px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 0; /* Remove left margin */
+    margin-right: 0; /* Remove right margin */
+}
+
+/* Email layout */
+.email {
+    padding: 20px 10px 15px 10px;
+    font-size: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;  /* Full width */
+    color: black; /* Set the text color to black */
+}
+
+.email h2 {
+    margin-top: 0;
+    padding-bottom: 8px;
+}
+
+/* Table adjustments */
+.email table {
+    font-weight: 600;
+    width: 100%; /* Ensure table stretches across the full width */
+    color: black; /* Set the table text color to black */
+}
+
+.email table a {
+    color: black; /* Set links' text color to black */
+}
+
+.email table tr.read > td {
+    background-color: #f6f6f6;
+}
+
+.email table tr td > i.fa {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.email table tr td > i.fa-star {
+    color: #f39c12;
+}
+
+.email table tr td > i.fa-bookmark {
+    color: #e74c3c;
+}
+
+/* Fullscreen modal adjustment */
+.modal-dialog {
+    width: calc(100% - 10px);  /* Full screen width minus 5px padding on each side */
+    max-width: none; /* Remove max-width restriction */
+    margin: 0 auto; /* Center the modal */
+}
+
+/* Padding for modal body */
+.modal-body {
+    padding: 20px;
+    color: black; /* Set modal text color to black */
+}
+
+/* Adjust pagination for full-screen width */
+.pagination {
+    text-align: center;
+    width: 100%; /* Stretch pagination to full width */
+}

@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+	<link href="{% static 'inbox.css' %}" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-14">
+			<div class="grid email">
+				<div class="grid-body">
+					<div class="row">
+
+
+						<!-- BEGIN INBOX MENU -->
+						<div class="col-md-2">
+							 <h1 class="text-center"><i class="fa fa-user" ></i></h1>
+							<h3 class="text-center">{{name}}</h3><br>
+							<h2 class="grid-title"><a href="/sendForm" class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Send Mail</a></h2>
+						   <div>
+							 <ul class="nav nav-pills nav-stacked">
+								 <li class="header"><h1></h1></li>
+								 <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox (14)</a></li>
+								 <li><a href="#"><i class="fa fa-star"></i> Starred</a></li>
+								 <li><a href="#"><i class="fa fa-bookmark"></i> Important</a></li>
+								 <li><a href="#"><i class="fa fa-mail-forward"></i> Sent</a></li>
+								 <li><a href="#"><i class="fa fa-pencil-square-o"></i> Drafts</a></li>
+								 <li><a href="#"><i class="fa fa-folder"></i> Spam (217)</a></li>
+							 </ul>
+						  </div>
+						</div>
+						<!-- END INBOX MENU -->
+
+
+						<!-- BEGIN INBOX CONTENT -->
+						<div class="col-md-10">
+							<div class="row">
+
+								<div><h1></h1></div>
+									{% if messages %} {% for m in messages %}
+								     <div class="alert alert-warning" role="alert" >{{m}}</div>
+								    {% endfor %} {% endif %}
+									<div><h1></h1></div>
+
+								<div class="col-md-6 search-form">
+									<form action="/search/" method="POST">
+										{% csrf_token %}
+										<div class="input-group">
+											<input type="text" class="form-control input-sm" name='email' placeholder="Search">
+											<span class="input-group-btn">
+												<button type="submit" name="search" class="btn_ btn-primary btn-sm search"><i class="fa fa-search"></i>
+												</button>
+											</span>
+										</div>
+									</form>
+								</div>
+
+								<div class="col-md-6 search-form" >
+									<p class="text-right"> <a href="/" class="btn btn-success btn-lg">Logout</a></p>
+								</div>
+
+							</div>
+
+							<div class="padding"></div>
+							<div class="table-responsive">
+								<table class="table">
+									<tbody >
+									<tr >
+										<th class="action"><input type="checkbox" /></th>
+										<th class="action"><i class="fa fa-star-o"></i></th>
+										<th class="action"><i class="fa fa-bookmark-o"></i></th>
+										<th class="name">Receive From</a></th>
+										<th class="subject">Date</th>
+										<th class="subject">Subject</th>
+										<th class="time">Body</th>
+										<th class="time">Time</th>
+										<th class="time">Delete</th>
+									</tr>
+									            {% for email in emails %}
+									<tr>
+										<td class="action"><input type="checkbox" /></td>
+										<td class="action"><i class="fa fa-star-o"></i></td>
+										<td class="action"><i class="fa fa-bookmark-o"></i></td>
+										<td class="name">   <a href="/display/?id={{email.id}}">{{ email.sender }}</a></td>
+										<td class="subject"><a href="/display/?id={{email.id}}">{{ email.time|date:"j F, Y," }}</a></td>
+										<td class="subject"><a href="/display/?id={{email.id}}">{{ email.subject }}</a></td>
+										<td class="subject"><a href="/display/?id={{email.id}}">{{ email.body }}</a></td>
+										<td class="time">   <a href="/display/?id={{email.id}}">{{ email.time|date:"g:i a"}}</a></td>
+										<td> <a href="/delete/?id={{email.id}}" class="btn btn-danger">Delete</a></td>
+									</tr>
+									             {% endfor %}
+								    </tbody>
+								</table>
+							</div>
+						</div>
+						<!-- END INBOX CONTENT -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+<script src='https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+</body>
+</html>
